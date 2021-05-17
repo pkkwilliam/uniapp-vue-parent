@@ -1,11 +1,11 @@
 <template>
-  <view class="container">
-    <PlatformSelection class="component-container" />
-    <Event class="component-container" />
+  <view>
+    <PlatformSelection class="section-container" />
+    <Event class="section-container" />
     <u-sticky offset-top="0">
       <u-tabs
         activeColor="#000000"
-        class="component-container"
+        class="section-container"
         height="40"
         gutter="20"
         :current="currentCategoryIndex"
@@ -14,7 +14,7 @@
         :showBar="false"
         @change="onChangeCategory"
     /></u-sticky>
-    <WaterFallListing class="component-container" :flowList="itemList" />
+    <WaterFallListing class="section-container" :flowList="itemList" />
   </view>
 </template>
 
@@ -62,10 +62,4 @@ export default {
 };
 </script>
 
-<style>
-.container {
-}
-.component-container {
-  margin-top: 15px;
-}
-</style>
+<style lang="scss"></style>

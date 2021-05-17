@@ -55,53 +55,81 @@ export const GET_EVENTS_MOCK_RESPONSE = [
   },
 ];
 
+export const GET_ITEM_MOCK_RESPONSE = {
+  id: 1,
+  brand: "Tesla",
+  description: "超新Tesla 0 - 100 只要2.5秒",
+  images: [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRINap6f_EVXnFq-PjGa_GHXqoF3neSxpw0acQMTcziSQu6xsEFkCifyfTH314PCTtgMkc&usqp=CAU",
+    "https://uploads.onlyusedtesla.com/wp-content/uploads/2020/01/06005942/39AD4A7A-4771-434E-ACC7-A273E3A6FAE7.jpeg",
+    "https://i.pinimg.com/originals/e0/c6/80/e0c68023f1b99d2cdde8bb2df8a125cc.jpg",
+  ],
+  itemCondition: "LIKE_NEW",
+  originalPrice: 81000,
+  price: 32000,
+  purchasedFrom: "Tesla 展銷中心",
+  name: "Tesla Model S",
+  user: {
+    description: "混迹多年，只賣假貨！",
+    imageUrl:
+      "https://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg",
+    level: 5,
+    name: "專賣假貨",
+    qualifications: ["PHONE_NUMBER_VERIFIED"],
+    sid: "oscm_b19bb4a69c084243a020b33a50225fb6",
+    username: "oscm_b19bb4a69c084243a020b33a50225fb6",
+  },
+};
+
 export const GET_ITEMS_MOCK_RESPONSE = [
   {
-    price: 35,
-    title: "北国风光，千里冰封，万里雪飘",
-    shop: "李白杜甫白居易旗舰店",
-    image: "https://cdn.emojidex.com/emoji/seal/Nutella.png?1590864170",
+    id: 1,
+    brand: "Tesla",
+    description: "超新Tesla 0 - 100 只要2.5秒",
+    images: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRINap6f_EVXnFq-PjGa_GHXqoF3neSxpw0acQMTcziSQu6xsEFkCifyfTH314PCTtgMkc&usqp=CAU",
+      "https://uploads.onlyusedtesla.com/wp-content/uploads/2020/01/06005942/39AD4A7A-4771-434E-ACC7-A273E3A6FAE7.jpeg",
+      "https://i.pinimg.com/originals/e0/c6/80/e0c68023f1b99d2cdde8bb2df8a125cc.jpg",
+    ],
+    itemCondition: "LIKE_NEW",
+    originalPrice: 81000,
+    price: 32000,
+    purchasedFrom: "Tesla 展銷中心",
+    name: "Tesla Model S",
+    user: {
+      description: "混迹多年，只賣假貨！",
+      imageUrl:
+        "https://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg",
+      level: 5,
+      name: "專賣假貨",
+      qualifications: ["PHONE_NUMBER_VERIFIED"],
+      sid: "oscm_b19bb4a69c084243a020b33a50225fb6",
+      username: "oscm_b19bb4a69c084243a020b33a50225fb6",
+    },
   },
   {
-    price: 75,
-    title: "望长城内外，惟余莽莽",
-    shop: "李白杜甫白居易旗舰店",
-    image: "http://pic.sc.chinaz.com/Files/pic/pic9/202002/zzpic23325_s.jpg",
-  },
-  {
-    price: 35,
-    title: "北国风光，千里冰封，万里雪飘",
-    shop: "李白杜甫白居易旗舰店",
-    image: "http://pic.sc.chinaz.com/Files/pic/pic9/202002/zzpic23327_s.jpg",
-  },
-  {
-    price: 75,
-    title: "望长城内外，惟余莽莽",
-    shop: "李白杜甫白居易旗舰店",
-    image: "http://pic.sc.chinaz.com/Files/pic/pic9/202002/zzpic23325_s.jpg",
-  },
-  {
-    price: 35,
-    title: "北国风光，千里冰封，万里雪飘",
-    shop: "李白杜甫白居易旗舰店",
-    image: "http://pic.sc.chinaz.com/Files/pic/pic9/202002/zzpic23327_s.jpg",
-  },
-  {
-    price: 75,
-    title: "望长城内外，惟余莽莽",
-    shop: "李白杜甫白居易旗舰店",
-    image: "http://pic.sc.chinaz.com/Files/pic/pic9/202002/zzpic23325_s.jpg",
-  },
-  {
-    price: 35,
-    title: "北国风光，千里冰封，万里雪飘",
-    shop: "李白杜甫白居易旗舰店",
-    image: "http://pic.sc.chinaz.com/Files/pic/pic9/202002/zzpic23327_s.jpg",
-  },
-  {
-    price: 75,
-    title: "望长城内外，惟余莽莽",
-    shop: "李白杜甫白居易旗舰店",
-    image: "http://pic.sc.chinaz.com/Files/pic/pic9/202002/zzpic23325_s.jpg",
+    id: 1,
+    brand: "Tesla",
+    description: "超新Tesla 0 - 100 只要2.5秒",
+    images: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRINap6f_EVXnFq-PjGa_GHXqoF3neSxpw0acQMTcziSQu6xsEFkCifyfTH314PCTtgMkc&usqp=CAU",
+      "https://uploads.onlyusedtesla.com/wp-content/uploads/2020/01/06005942/39AD4A7A-4771-434E-ACC7-A273E3A6FAE7.jpeg",
+      "https://i.pinimg.com/originals/e0/c6/80/e0c68023f1b99d2cdde8bb2df8a125cc.jpg",
+    ],
+    itemCondition: "LIKE_NEW",
+    originalPrice: 81000,
+    price: 32000,
+    purchasedFrom: "Tesla 展銷中心",
+    name: "Tesla Model S",
+    user: {
+      description: "混迹多年，只賣假貨！",
+      imageUrl:
+        "https://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg",
+      level: 5,
+      name: "專賣假貨",
+      qualifications: ["PHONE_NUMBER_VERIFIED"],
+      sid: "oscm_b19bb4a69c084243a020b33a50225fb6",
+      username: "oscm_b19bb4a69c084243a020b33a50225fb6",
+    },
   },
 ];

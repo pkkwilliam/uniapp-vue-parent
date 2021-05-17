@@ -22,9 +22,46 @@
       }
     },
     {
+      "path": "pages/confirmPurchase/confirmPurchase",
+      "style": {
+        "navigationBarTitleText": "購買寶貝",
+        "app-plus": {
+          "animationDuration": 300,
+          "animationType": "slide-in-right",
+          "backgroundColor": "#FFFFFF"
+        }
+      }
+    },
+    {
+      "path": "pages/itemDetail/itemDetail",
+      "style": {
+        "navigationBarTitleText": "",
+        "app-plus": {
+          "animationDuration": 300,
+          "animationType": "slide-in-right"
+        }
+      }
+    },
+    {
+      "path": "pages/prePurchase/prePurchase",
+      "style": {
+        "navigationBarTitleText": "",
+        "app-plus": {
+          "animationDuration": 300,
+          "animationType": "slide-in-right"
+        }
+      }
+    },
+    {
       "path": "pages/recommendation/recommendation",
       "style": {
         "navigationBarTitleText": "组件"
+      }
+    },
+    {
+      "path": "pages/selectShippingAddress/selectShippingAddress",
+      "style": {
+        "navigationBarTitleText": "送貨地址"
       }
     },
     {

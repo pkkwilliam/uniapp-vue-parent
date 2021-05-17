@@ -37,14 +37,151 @@ $u-type-info-light: #f4f4f5;
 $u-form-item-height: 70rpx;
 $u-form-item-border-color: #dcdfe6;
 
-$u-component-background-color: #f9fbfa;
-$u-background-color: #ffffff;
+// bitcode phoenix style guild
+$u-background-primary-color: #ffffff;
+$u-background-primary-color-secondary: #f8f8f8;
 
 $u-primary-color: #fde814;
-$u-secondary-color: #ababab;
+$u-secondary-color: "#FC9603";
+$u-tertiary-color: #f22764;
+$u-disabled-color: #ababab;
+$u-divider-color: #ececec;
+
+.primary-button {
+  background-color: #fde814;
+  border: none;
+  border-radius: 50px;
+  color: #000000;
+  font-size: 28rpx;
+  font-weight: "600";
+}
+
+.secondary-button {
+  background: #fc9603;
+  border: none;
+  border-color: #fc9603;
+  border-radius: 36rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: "600";
+}
+
+.gradient-button {
+  background: linear-gradient(90deg, #fc9603 0%, rgba(242, 39, 100, 1) 100%);
+  border-radius: 36rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: "600";
+  line-height: 66rpx;
+  padding: 0 30rpx;
+}
+
+.link-button {
+  background: rgba(255, 255, 255, 0);
+  color: #33ccff;
+  font-weight: 300;
+  text-decoration: underline;
+}
+
+.text-button {
+  background: rgba(255, 255, 255, 0);
+  color: #1fb4ed;
+  font-size: 18;
+  font-weight: 500;
+}
+
+.text-button-small {
+  @extend .text-button;
+  font-size: 16;
+  font-weight: 300;
+}
+
+.header {
+  color: #333333;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.header-small {
+  @extend .header;
+  font-size: 16px;
+}
+
+.body-text {
+  color: #333333;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.caption {
+  color: #ababab;
+  font-size: 14px;
+}
+
+.caption-small {
+  @extend .caption;
+  font-size: 12px;
+}
+
+// style guide end
+
+uni-page-body {
+  height: 100%;
+}
+
+.uni-page-head-btn {
+  display: flex;
+}
+
+button::after {
+  border: none;
+}
+
+// application defined theme color
+$u-card-background-color: #f9fbfa;
+$u-price-color: red;
+
+.column-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.center-row-container {
+  display: flex;
+  align-items: center;
+}
+
+.page-container {
+  background: white;
+  height: inherit;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.page-container-secondary {
+  @extend .page-container;
+  background: $u-background-primary-color-secondary;
+}
+
+.section-container {
+  padding-top: 15px;
+}
+
+.text-primary {
+  font-size: 18px;
+}
 
 :export {
-  backgroundColor: $u-background-color;
+  backgroundColor: $u-background-primary-color;
+  backgroundColorSecondary: $u-background-primary-color-secondary;
+  cardBackgroundColor: $u-card-background-color;
+  dividerColor: $u-divider-color;
   primaryColor: $u-primary-color;
   secondaryColor: $u-secondary-color;
 }

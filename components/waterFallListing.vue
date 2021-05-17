@@ -1,3 +1,4 @@
+,
 <template>
   <view class="wrap">
     <u-waterfall v-model="flowList" ref="uWaterfall">
@@ -6,21 +7,22 @@
           class="demo-warter demo-water-left"
           v-for="(item, index) in leftList"
           :key="index"
+          @click="onClickItem(item)"
         >
           <!-- 微信小程序需要hx2.8.11版本才支持在template中引入其他组件，比如下方的u-lazy-load组件 -->
           <u-lazy-load
             threshold="-450"
             border-radius="10"
-            :image="item.image"
+            :image="item.images[0]"
             :index="index"
           ></u-lazy-load>
-          <view class="demo-title">{{ item.title }}</view>
+          <view class="demo-title">{{ item.name }}</view>
           <view class="demo-price">{{ item.price }}元</view>
           <view class="demo-tag">
             <view class="demo-tag-owner">自营</view>
             <view class="demo-tag-text">放心购</view>
           </view>
-          <view class="demo-shop">{{ item.shop }}</view>
+          <view class="demo-shop">{{ item.user.name }}</view>
         </view>
       </template>
       <template v-slot:right="{ rightList }">
@@ -28,20 +30,21 @@
           class="demo-warter demo-water-right"
           v-for="(item, index) in rightList"
           :key="index"
+          @click="onClickItem(item)"
         >
           <u-lazy-load
             threshold="-450"
             border-radius="10"
-            :image="item.image"
+            :image="item.images[0]"
             :index="index"
           ></u-lazy-load>
-          <view class="demo-title">{{ item.title }}</view>
+          <view class="demo-title">{{ item.name }}</view>
           <view class="demo-price">{{ item.price }}元</view>
           <view class="demo-tag">
             <view class="demo-tag-owner">自营</view>
             <view class="demo-tag-text">放心购</view>
           </view>
-          <view class="demo-shop">{{ item.shop }}</view>
+          <view class="demo-shop">{{ item.user.name }}</view>
         </view>
       </template>
     </u-waterfall>
@@ -54,6 +57,9 @@
 </template>
 
 <script>
+import { ITEM_DETAIL_PAGE } from "@/navigation/page";
+import { VUEX_SELECTED_ITEM } from "@/store/appStateKey";
+import { goTo, setAppStateValue } from "@/common/componentUtil";
 export default {
   data() {
     return {
@@ -65,22 +71,16 @@ export default {
     this.loadStatus = "loading";
     // 模拟数据加载
     setTimeout(() => {
-      this.addRandomData();
       this.loadStatus = "loadmore";
     }, 1000);
   },
   methods: {
-    addRandomData() {
-      for (let i = 0; i < 10; i++) {
-        let index = this.$u.random(0, this.list.length - 1);
-        // 先转成字符串再转成对象，避免数组对象引用导致数据混乱
-        let item = JSON.parse(JSON.stringify(this.list[index]));
-        item.id = this.$u.guid();
-        this.flowList.push(item);
-      }
-    },
     clear() {
       this.$refs.uWaterfall.clear();
+    },
+    onClickItem(item) {
+      setAppStateValue(this, VUEX_SELECTED_ITEM, item);
+      goTo(this, ITEM_DETAIL_PAGE);
     },
   },
   props: {

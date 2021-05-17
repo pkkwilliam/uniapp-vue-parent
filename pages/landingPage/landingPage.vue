@@ -1,6 +1,6 @@
 <template>
   <SafeAreaView>
-    <view class="wrap" style="background: white">
+    <view class="page-container wrap" style="background: white">
       <view class="u-tabs-box tab-container">
         <u-tabs-swiper
           activeColor="#000000"
@@ -124,9 +124,6 @@ page {
 </style>
 
 <style lang="scss" scoped>
-.container {
-  background: white;
-}
 .search-bar-container {
   align-items: center;
   display: flex;
@@ -138,8 +135,6 @@ page {
   display: flex;
   flex-direction: column;
   height: calc(100vh - var(--window-top));
-  padding-left: 10px;
-  padding-right: 10px;
 }
 .swiper-box {
   flex: 1;

@@ -1,5 +1,5 @@
 <template>
-  <view class="container">
+  <Card>
     <view class="option-container"
       ><text class="header">優質特選</text
       ><text class="advertise-text advertise-text-buy">成色優選 品質三包</text>
@@ -23,13 +23,14 @@
         <img src="https://cdn.emojidex.com/emoji/seal/Nutella.png?1590864170" />
       </view>
     </view>
-  </view>
+  </Card>
 </template>
 
 <script>
-import VerticalDivider from "../common/verticalDivider";
+import Card from "../common/card";
+import VerticalDivider from "../components/verticalDivider";
 export default {
-  components: { VerticalDivider },
+  components: { Card, VerticalDivider },
   name: "PlatformSelection",
 };
 </script>
@@ -39,12 +40,8 @@ img {
   width: 85px;
 }
 .container {
-  background: $u-component-background-color;
-  border-radius: 5px;
-  display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 5px;
 }
 
 .option-container {

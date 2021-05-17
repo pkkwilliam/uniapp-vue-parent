@@ -3,7 +3,7 @@
     <text class="header">熱門活動</text>
     <scroll-view class="scroll-view" scroll-x="scroll-left">
       <view class="events-container">
-        <view class="event-container" v-for="event in events" :key="event.id">
+        <Card v-for="event in events" :key="event.id">
           <img :src="event.imageUrl" />
           <view class="text-container">
             <text>{{ event.name }}</text>
@@ -13,16 +13,18 @@
               <u-icon name="arrow-right" color="#969799" size="28"></u-icon>
             </view>
           </view>
-        </view>
+        </Card>
       </view>
     </scroll-view>
   </view>
 </template>
 
 <script>
+import Card from "../common/card";
 import { execute } from "../common/serviceExecutor";
 import { GET_EVENTS } from "../common/service";
 export default {
+  components: { Card },
   data() {
     return {
       events: [],
@@ -43,6 +45,10 @@ text {
   font-weight: 600;
   font-size: 16px;
 }
+.card-container {
+  margin-right: 15px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -55,7 +61,6 @@ text {
 
 .event-container {
   align-items: center;
-  background: $u-component-background-color;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
