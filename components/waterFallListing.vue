@@ -22,7 +22,7 @@
             <view class="demo-tag-owner">自营</view>
             <view class="demo-tag-text">放心购</view>
           </view>
-          <view class="demo-shop">{{ item.user.name }}</view>
+          <view class="demo-shop">{{ item.createBy.name }}</view>
         </view>
       </template>
       <template v-slot:right="{ rightList }">
@@ -44,7 +44,7 @@
             <view class="demo-tag-owner">自营</view>
             <view class="demo-tag-text">放心购</view>
           </view>
-          <view class="demo-shop">{{ item.user.name }}</view>
+          <view class="demo-shop">{{ item.createBy.name }}</view>
         </view>
       </template>
     </u-waterfall>
@@ -57,16 +57,20 @@
 </template>
 
 <script>
-import { ITEM_DETAIL_PAGE } from "@/navigation/page";
-import { VUEX_SELECTED_ITEM } from "@/store/appStateKey";
-import { goTo, setAppStateValue } from "@/common/componentUtil";
+import ComponentUtil, {
+  APP_STATE_VUEX_SELECTED_ITEM,
+  NAVIGATION_ITEM_DETAIL_PAGE,
+} from "@/common/componentUtil";
 export default {
   data() {
     return {
+      componentUtil: undefined,
       loadStatus: "loadmore",
     };
   },
-  onLoad() {},
+  mounted() {
+    this.componentUtil = new ComponentUtil(this);
+  },
   onReachBottom() {
     this.loadStatus = "loading";
     // 模拟数据加载
@@ -79,8 +83,8 @@ export default {
       this.$refs.uWaterfall.clear();
     },
     onClickItem(item) {
-      setAppStateValue(this, VUEX_SELECTED_ITEM, item);
-      goTo(this, ITEM_DETAIL_PAGE);
+      this.componentUtil.setAppStateValue(APP_STATE_VUEX_SELECTED_ITEM, item);
+      this.componentUtil.goTo(NAVIGATION_ITEM_DETAIL_PAGE);
     },
   },
   props: {

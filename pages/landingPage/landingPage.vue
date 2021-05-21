@@ -57,15 +57,21 @@ import Recommendation from "../recommendation/recommendation";
 import SafeAreaView from "../../components/safeAreaView";
 import SearchBar from "../../components/searchBar";
 import styleSchema from "../../uview-ui/theme.scss";
+import ComponentUtil, {
+  APP_STATE_VUEX_USER_PROFILE,
+  STORAGE_USER_TOKEN,
+} from "../../common/componentUtil";
+import { GET_USER_PROFILE } from "../../common/service";
+
 export default {
   components: { Recommendation, SafeAreaView, SearchBar },
-  computed: {},
   data() {
     return {
       barStyle: {
         backgroundColor: styleSchema.primaryColor,
         height: "5px",
       },
+      componentUtil: undefined,
       list: [
         {
           name: "關注",
@@ -85,8 +91,6 @@ export default {
       styleSchema,
     };
   },
-  onLoad() {},
-  computed: {},
   methods: {
     reachBottom() {
       // 此tab为空数据
@@ -110,6 +114,20 @@ export default {
       this.swiperCurrent = current;
       this.current = current;
     },
+  },
+  mounted() {
+    this.componentUtil = new ComponentUtil(this);
+    const token = this.componentUtil.getStorage(STORAGE_USER_TOKEN);
+    if (token) {
+      this.componentUtil
+        .serviceExecute(GET_USER_PROFILE())
+        .then((userProfile) =>
+          this.componentUtil.setAppStateValue(
+            APP_STATE_VUEX_USER_PROFILE,
+            userProfile
+          )
+        );
+    }
   },
 };
 </script>

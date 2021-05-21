@@ -35,6 +35,8 @@ const store = new Vuex.Store({
     vuex_version: "1.0.1",
     vuex_demo: "绛紫",
     vuex_selected_item: {},
+    vuex_shipping_addresses: [],
+    vuex_user_profile: { dirty: true, username: undefined },
     // 自定义tabbar数据
   },
   mutations: {

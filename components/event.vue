@@ -21,17 +21,21 @@
 
 <script>
 import Card from "../common/card";
-import { execute } from "../common/serviceExecutor";
 import { GET_EVENTS } from "../common/service";
+import ComponentUtil from "../common/componentUtil";
 export default {
   components: { Card },
   data() {
     return {
+      componentUtil: undefined,
       events: [],
     };
   },
   mounted() {
-    execute(GET_EVENTS()).then((response) => (this.events = response));
+    this.componentUtil = new ComponentUtil(this);
+    this.componentUtil
+      .serviceExecute(GET_EVENTS())
+      .then((response) => (this.events = response));
   },
   name: "Event",
 };

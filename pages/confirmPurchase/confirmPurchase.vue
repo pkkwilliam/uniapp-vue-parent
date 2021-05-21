@@ -12,8 +12,8 @@
     <Card class="shipping-container column-container" type="primary">
       <view class="row-container">
         <text class="body-text">收貨地址</text>
-        <view class="row-container">
-          <text class="caption-small">未有收貨地址</text>
+        <view class="row-container" @click="onClickSelectShippingAddress">
+          <text class="caption-small">{{ addressText }}</text>
           <u-icon color="#ABABAB" name="arrow-right" :size="29"></u-icon>
         </view>
       </view>
@@ -37,8 +37,14 @@
 import Card from "../../common/card";
 import HorizontalDivider from "../../components/horizontalDivider";
 import Price from "../../common/price";
-import { getAppStateValue, goTo } from "@/common/componentUtil";
-import { VUEX_SELECTED_ITEM } from "@/store/appStateKey";
+import ComponentUtil, {
+  NAVIGATION_SELECT_SHIPPING_ADDRESS_PAGE,
+} from "@/common/componentUtil";
+import { GET_ADDRESS_ALL } from "@/common/service";
+import {
+  APP_STATE_VUEX_SELECTED_ITEM,
+  APP_STATE_VUEX_SHIPPING_ADDRESSES,
+} from "../../common/componentUtil";
 
 export default {
   components: {
@@ -53,12 +59,43 @@ export default {
   },
   data() {
     return {
+      addressText: "未有收貨地址",
+      componentUtil: undefined,
       item: {},
+      selectedAddress: {},
     };
   },
+  methods: {
+    onClickSelectShippingAddress() {
+      this.componentUtil.goTo(NAVIGATION_SELECT_SHIPPING_ADDRESS_PAGE);
+    },
+    onSelectedAddress(address) {
+      this.selectedAddress = address;
+    },
+  },
   name: "ConfirmPurchase",
-  onLoad(option) {
-    this.item = getAppStateValue(this, VUEX_SELECTED_ITEM);
+  async onLoad(option) {
+    this.componentUtil = new ComponentUtil(this);
+    this.item = this.componentUtil.getAppStateValue(
+      APP_STATE_VUEX_SELECTED_ITEM
+    );
+    const shippingAddresses = await this.componentUtil.serviceExecute(
+      GET_ADDRESS_ALL()
+    );
+    this.componentUtil.setAppStateValue(
+      APP_STATE_VUEX_SHIPPING_ADDRESSES,
+      shippingAddresses
+    );
+
+    // set default selected address
+    for (let index = 0; index < shippingAddresses.length; index++) {
+      if (shippingAddresses[index].defaultShipping) {
+        const selectedAddress = shippingAddresses[index];
+        this.selectedAddress = selectedAddress;
+        this.addressText = selectedAddress.street + selectedAddress.unit;
+        break;
+      }
+    }
   },
 };
 </script>

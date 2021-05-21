@@ -22,6 +22,17 @@
       }
     },
     {
+      "path": "pages/selectShippingAddress/addAddress",
+      "style": {
+        "navigationBarTitleText": "添加地址",
+        "app-plus": {
+          "animationDuration": 300,
+          "animationType": "slide-in-right",
+          "backgroundColor": "#FFFFFF"
+        }
+      }
+    },
+    {
       "path": "pages/confirmPurchase/confirmPurchase",
       "style": {
         "navigationBarTitleText": "購買寶貝",
@@ -36,6 +47,26 @@
       "path": "pages/itemDetail/itemDetail",
       "style": {
         "navigationBarTitleText": "",
+        "app-plus": {
+          "animationDuration": 300,
+          "animationType": "slide-in-right"
+        }
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "AppName登錄",
+        "app-plus": {
+          "animationDuration": 300,
+          "animationType": "slide-in-right"
+        }
+      }
+    },
+    {
+      "path": "pages/login/code",
+      "style": {
+        "navigationBarTitleText": "登錄獲取驗證碼",
         "app-plus": {
           "animationDuration": 300,
           "animationType": "slide-in-right"

@@ -66,16 +66,18 @@ import Condition from "../../components/conditionTag";
 import styleSchema from "../../uview-ui/theme.scss";
 import UserAbstract from "../../components/userAbstract";
 import HorizontalDivider from "../../components/horizontalDivider";
-import { GET_ITEM } from "../../common/service";
-import { execute } from "../../common/serviceExecutor";
-import { PRE_PURCHASE_PAGE } from "@/navigation/page";
-import { getAppStateValue, goTo } from "@/common/componentUtil";
-import { VUEX_SELECTED_ITEM } from "@/store/appStateKey";
+import ComponentUtil, {
+  APP_STATE_VUEX_SELECTED_ITEM,
+  APP_STATE_VUEX_USER_PROFILE,
+  NAVIGATION_LOGIN_PAGE,
+  NAVIGATION_PRE_PURCHASE_PAGE,
+} from "../../common/componentUtil";
 
 export default {
   components: { Condition, HorizontalDivider, UserAbstract },
   data() {
     return {
+      componentUtil: undefined,
       item: {},
       styleSchema,
     };
@@ -85,14 +87,26 @@ export default {
       return `MOP ${cost}`;
     },
     onClickPrePurchase() {
-      goTo(this, PRE_PURCHASE_PAGE);
+      const userProfile = this.componentUtil.getAppStateValue(
+        APP_STATE_VUEX_USER_PROFILE
+      );
+      if (!userProfile.username) {
+        this.componentUtil.goTo(NAVIGATION_LOGIN_PAGE, {
+          onSucessRedirectPage: NAVIGATION_PRE_PURCHASE_PAGE,
+        });
+      } else {
+        this.componentUtil.goTo(NAVIGATION_PRE_PURCHASE_PAGE);
+      }
     },
   },
   name: "ItemDetail",
   onLoad(option) {
+    this.componentUtil = new ComponentUtil(this);
     // taking itemId from vuex
-    const item = getAppStateValue(this, VUEX_SELECTED_ITEM);
-    execute(GET_ITEM(item.id)).then((result) => (this.item = result));
+    const item = this.componentUtil.getAppStateValue(
+      APP_STATE_VUEX_SELECTED_ITEM
+    );
+    this.item = item;
   },
 };
 </script>

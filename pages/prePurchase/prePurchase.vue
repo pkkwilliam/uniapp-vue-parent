@@ -45,9 +45,10 @@ import Card from "../../common/card";
 import HorizontalDivider from "../../components/horizontalDivider";
 import TopNavigationBar from "@/components/topNavigationBar";
 import styleSchema from "../../uview-ui/theme.scss";
-import { CONFIRM_PURCHASE_PAGE } from "@/navigation/page";
-import { VUEX_SELECTED_ITEM } from "@/store/appStateKey";
-import { getAppStateValue, goTo } from "@/common/componentUtil";
+import ComponentUtil, {
+  APP_STATE_VUEX_SELECTED_ITEM,
+  NAVIGATION_CONFIRM_PURCHASE_PAGE,
+} from "@/common/componentUtil";
 
 export default {
   components: {
@@ -63,10 +64,10 @@ export default {
       return styleSchema;
     },
     userNickname() {
-      return this.item.user.name;
+      return this.item.createBy.name;
     },
     username() {
-      return this.item.user.username;
+      return this.item.createBy.username;
     },
     thumbnail() {
       return this.item.images[0];
@@ -74,17 +75,21 @@ export default {
   },
   data() {
     return {
+      componentUtil: undefined,
       item: {},
     };
   },
   methods: {
     onClickPurchase() {
-      goTo(this, CONFIRM_PURCHASE_PAGE);
+      this.componentUtil.goTo(NAVIGATION_CONFIRM_PURCHASE_PAGE);
     },
   },
   name: "PrePurchase",
   onLoad() {
-    this.item = getAppStateValue(this, VUEX_SELECTED_ITEM);
+    this.componentUtil = new ComponentUtil(this);
+    this.item = this.componentUtil.getAppStateValue(
+      APP_STATE_VUEX_SELECTED_ITEM
+    );
   },
 };
 </script>

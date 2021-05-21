@@ -24,7 +24,7 @@ import PlatformSelection from "../../components/platformSelections";
 import SearchBar from "../../components/searchBar";
 import TextButton from "../../common/textButton";
 import WaterFallListing from "../../components/waterFallListing";
-import { execute } from "../../common/serviceExecutor";
+import ComponentUtil from "../../common/componentUtil";
 import { GET_CATEGORIES, GET_ITEMS } from "../../common/service";
 import styleSchema from "../../uview-ui/theme.scss";
 export default {
@@ -38,7 +38,9 @@ export default {
   data() {
     return {
       categoryList: [],
+      componentUtil: undefined,
       currentCategoryIndex: 0,
+      currentPage: 0,
       itemList: [],
       styleSchema,
     };
@@ -52,11 +54,15 @@ export default {
     },
   },
   mounted() {
-    execute(GET_CATEGORIES()).then(
-      (response) => (this.categoryList = response)
-    );
-    // TODO need to pass param into this
-    execute(GET_ITEMS()).then((response) => (this.itemList = response));
+    this.componentUtil = new ComponentUtil(this);
+    // TODO category
+    this.componentUtil
+      .serviceExecute(GET_ITEMS(this.currentPage))
+      .then((response) => {
+        const { content, number } = response;
+        this.currentPage = number;
+        this.itemList = content;
+      });
   },
   name: "Recommendation",
 };
